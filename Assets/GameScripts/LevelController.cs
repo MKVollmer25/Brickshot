@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    Ball GameBall;
     int Score;
+    string Color;
+    bool ColorSwitch;
     Dictionary<string, int> RedDamages;
     Dictionary<string, int> BlueDamages;
     Dictionary<string, int> YellowDamages;
@@ -20,7 +21,8 @@ public class LevelController : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         Score = 0;
-        GameBall = GameObject.Find("Ball").GetComponent<Ball>();
+        Color = "Red";
+        ColorSwitch = true;
         RedDamages = new Dictionary<string, int>();
         BlueDamages = new Dictionary<string, int>();
         YellowDamages = new Dictionary<string, int>();
@@ -37,18 +39,7 @@ public class LevelController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            GameBall.SetBallColor("Red");
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            GameBall.SetBallColor("Blue");
-        }
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            GameBall.SetBallColor("Yellow");
-        }
+        
     }
 
     public Dictionary<string, int> GetDamages(string Color)
@@ -71,6 +62,22 @@ public class LevelController : MonoBehaviour
     public void AddScore(int PointsEarned)
     {
         Score += PointsEarned;
+    }
+
+    public string GetColor()
+    {
+        return Color;
+    }
+
+    public bool SetColor(string Color)
+    {
+        if (!ColorSwitch || this.Color == Color)
+        {
+            return false;
+        }
+        ColorSwitch = false;
+        this.Color = Color;
+        return true;
     }
 
     public int GetScore()

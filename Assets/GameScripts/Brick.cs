@@ -50,7 +50,7 @@ public class Brick : MonoBehaviour
     {
         Debug.Log(BrickColor);
         int DamageDone;
-        if (Color != "Rainbow")
+        if (Color != "Super")
         {
             if (BrickColor != "Metal")
             {
@@ -74,13 +74,9 @@ public class Brick : MonoBehaviour
         }
         if (DamageDone >= HP)
         {
-            if (DamageDone == HP)
+            if (BrickColor != "Metal")
             {
-                Cont.AddScore(DamageDone + 2);
-            }
-            else
-            {
-                Cont.AddScore(DamageDone + 1);
+                Cont.AddScore(HP + 2);
             }
             Destroy(this.gameObject);
         }

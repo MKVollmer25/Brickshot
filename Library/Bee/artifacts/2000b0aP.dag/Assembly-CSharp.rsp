@@ -303,6 +303,7 @@
 "Assets/GameScripts/Edge.cs"
 "Assets/GameScripts/LevelController.cs"
 "Assets/GameScripts/Paddle.cs"
+"Assets/UIScripts/ScoreText.cs"
 -langversion:9.0
 
 /deterministic
